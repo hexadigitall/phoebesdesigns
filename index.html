@@ -11,7 +11,7 @@
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap"
         rel="stylesheet">
     <script>
-        // NEW: A richer, more sophisticated color scheme
+        // NEUTRAL, BEIGE/NUDE-BASED BRAND COLOR PALETTE
         tailwind.config = {
             theme: {
                 extend: {
@@ -20,11 +20,15 @@
                         'serif': ['Playfair Display', 'serif'],
                     },
                     colors: {
-                        'primary-bg': '#F7F5F2',      // Warm, creamy off-white
-                        'primary-text': '#1A202C',    // Very dark charcoal (near-black)
-                        'secondary-text': '#4A5568',  // Soft slate grey
-                        'accent-blue': '#2C3E50',     // Rich, deep indigo
-                        'accent-terracotta': '#C06C59', // Warm, earthy terracotta
+                        'primary-bg': '#F5F3EE',      // Soft beige background
+                        'primary-text': '#4B3F2F',    // Deep taupe text
+                        'secondary-text': '#8C7B6B',  // Muted sand
+                        'accent-nude': '#E8DED3',     // Nude accent
+                        'accent-beige': '#D6CFC2',    // Classic beige
+                        'accent-taupe': '#B8A898',    // Taupe accent
+                        'accent-brown': '#7C6A58',    // Muted brown for buttons
+                        'accent-white': '#FFFFFF',    // Pure white
+                        'accent-sand': '#F0E5D8',     // Sand highlight
                     }
                 }
             }
@@ -33,9 +37,9 @@
     <style>
         /* NEW: Custom SVG background for a more luxurious feel */
         .hero-bg {
-            background-color: #2C3E50;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%2334495e' fill-opacity='0.4'%3E%3Cpath d='M0 38.59l2.83-2.83 1.41 1.41L1.41 40H0v-1.41zM0 1.4l2.83 2.83 1.41-1.41L1.41 0H0v1.41zM38.59 40l-2.83-2.83 1.41-1.41L40 38.59V40h-1.41zM40 1.41l-2.83 2.83-1.41-1.41L38.59 0H40v1.41zM20 18.6l2.83-2.83 1.41 1.41L21.41 20l2.83 2.83-1.41 1.41L20 21.41l-2.83 2.83-1.41-1.41L18.59 20l-2.83-2.83 1.41-1.41L20 18.59z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-            background-size: auto;
+            background-color: #F5F3EE; /* Soft beige */
+            background-image: linear-gradient(135deg, #F5F3EE 0%, #E8DED3 60%, #D6CFC2 100%);
+            background-size: cover;
             background-position: center;
         }
 
@@ -62,7 +66,7 @@
         }
 
         .modal-content {
-            background: white;
+            background: #F5F3EE;
             height: 100%;
             width: 90%;
             max-width: 450px;
@@ -70,6 +74,8 @@
             transition: transform 0.4s ease-in-out;
             display: flex;
             flex-direction: column;
+            border-radius: 1.5rem;
+            box-shadow: 0 8px 32px rgba(176, 168, 152, 0.15);
         }
 
         .modal-overlay.active .modal-content {
@@ -91,6 +97,57 @@
         .fade-in {
             animation: fadeIn 0.5s ease-out forwards;
         }
+
+        /* Button styles: always deep taupe text for visibility */
+        button,
+        .btn {
+            transition: box-shadow 0.2s, transform 0.2s, background 0.2s, color 0.2s;
+            background: #E8DED3; /* Nude accent for buttons */
+            color: #4B3F2F;      /* Deep taupe text for visibility */
+            font-weight: 900;
+            border: 2px solid #B8A898;
+            box-shadow: 0 2px 8px rgba(176, 168, 152, 0.10);
+            opacity: 1;
+        }
+        button:active,
+        .btn:active {
+            background: #D6CFC2; /* Classic beige on active */
+            color: #4B3F2F;
+            border-color: #7C6A58;
+        }
+        button:hover,
+        .btn:hover {
+            box-shadow: 0 4px 16px rgba(176, 168, 152, 0.18);
+            background: #D6CFC2; /* Classic beige on hover */
+            color: #4B3F2F;
+            border-color: #7C6A58;
+            transform: translateY(-2px) scale(1.03);
+        }
+        a:hover {
+            text-decoration: underline;
+            color: #F7C6D9;
+        }
+        .card {
+            background: #F5F3EE;
+            border-radius: 1.5rem;
+            box-shadow: 0 4px 24px rgba(176, 168, 152, 0.10);
+            padding: 2rem 1.5rem;
+            transition: box-shadow 0.2s, transform 0.2s;
+            border: 1px solid #E8DED3;
+        }
+        .card:hover {
+            box-shadow: 0 8px 32px rgba(176, 168, 152, 0.18);
+            border-color: #B8A898;
+            transform: translateY(-4px) scale(1.04);
+        }
+
+        /* Typography scale */
+        h1, .text-6xl { font-size: 2.75rem; line-height: 1.1; }
+        h2, .text-5xl, .text-4xl { font-size: 2.25rem; line-height: 1.15; }
+        h3, .text-3xl { font-size: 1.5rem; line-height: 1.2; }
+        h4, .text-2xl { font-size: 1.25rem; line-height: 1.25; }
+        h5, .text-xl { font-size: 1.125rem; line-height: 1.3; }
+        body, .text-base, .text-md { font-size: 1rem; line-height: 1.6; }
 
         ::-webkit-scrollbar {
             width: 8px;
@@ -137,6 +194,8 @@
                             class="hover:text-accent-terracotta transition">Academy</a>
                         <a href="#" onclick="event.preventDefault(); app.navigateTo('blog')"
                             class="hover:text-accent-terracotta transition">Blog</a>
+                        <a href="#" onclick="event.preventDefault(); app.navigateTo('faq')"
+                            class="hover:text-accent-terracotta transition">FAQ</a>
                         <a href="#" onclick="event.preventDefault(); app.navigateTo('contact')"
                             class="hover:text-accent-terracotta transition">Contact</a>
                     </div>
@@ -169,6 +228,8 @@
                         class="block py-2 hover:text-accent-terracotta">Academy</a>
                     <a href="#" onclick="event.preventDefault(); app.navigateTo('blog')"
                         class="block py-2 hover:text-accent-terracotta">Blog</a>
+                    <a href="#" onclick="event.preventDefault(); app.navigateTo('faq')"
+                        class="block py-2 hover:text-accent-terracotta">FAQ</a>
                     <a href="#" onclick="event.preventDefault(); app.navigateTo('contact')"
                         class="block py-2 hover:text-accent-terracotta">Contact</a>
                 </div>
@@ -203,7 +264,7 @@
                     <p class="text-sm text-secondary-text mt-1">Shipping & taxes calculated at checkout.</p>
                 </div>
                 <button onclick="app.navigateTo('checkout')"
-                    class="w-full mt-4 bg-accent-blue text-white py-3 rounded-md font-semibold hover:bg-opacity-90 transition">Proceed
+                    class="w-full mt-4 bg-accent-blue text-primary-text py-3 rounded-md font-semibold hover:bg-opacity-90 transition">Proceed
                     to Checkout</button>
             </div>
         </div>
@@ -214,7 +275,7 @@
         <div class="modal-content text-center p-6" style="height:auto; max-width: 400px; transform: translateY(-20px);">
             <div id="message-content"></div>
             <button onclick="document.getElementById('message-modal').classList.remove('active')"
-                class="mt-6 w-full px-6 py-2 bg-accent-blue text-white rounded-md">Close</button>
+                class="mt-6 w-full px-6 py-2 bg-accent-blue text-primary-text rounded-md">Close</button>
         </div>
     </div>
 
@@ -226,6 +287,14 @@
                 <div>
                     <h3 class="font-serif text-xl font-bold">PHOEBES DESIGNS</h3>
                     <p class="mt-2 text-gray-400 text-sm">Crafting elegance, one stitch at a time.</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold tracking-wider uppercase">Join Our Newsletter</h4>
+                    <p class="mt-2 text-gray-400 text-sm">Get exclusive offers and style updates.</p>
+                    <form action="[YOUR_MAILCHIMP_URL]" method="post" class="mt-4 flex">
+                        <input type="email" name="EMAIL" class="w-full rounded-l-full border border-accent-pink p-3 text-primary-text focus:outline-none focus:ring-2 focus:ring-accent-pink" placeholder="Your email">
+                        <button type="submit" class="px-6 py-3 rounded-r-full font-bold btn text-primary-text" style="margin-left:-1px;">Sign Up</button>
+                    </form>
                 </div>
                 <div>
                     <h4 class="font-semibold tracking-wider uppercase">Quick Links</h4>
@@ -252,12 +321,12 @@
                 <div>
                     <h4 class="font-semibold tracking-wider uppercase">Follow Us</h4>
                     <div class="mt-4 flex justify-center md:justify-start space-x-4">
-                        <a href="#" class="text-gray-400 hover:text-white" aria-label="Instagram"><svg class="w-6 h-6"
+                        <a href="https://instagram.com/yourprofile" class="text-gray-400 hover:text-white" aria-label="Instagram"><svg class="w-6 h-6"
                                 fill="currentColor" viewBox="0 0 24 24">
                                 <path
                                     d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.011 3.584-.069 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.584-.012-4.85-.07c-3.252-.148-4.771-1.691-4.919-4.919-.058-1.265-.069-1.645-.069-4.85s.011-3.584.069-4.85c.149-3.225 1.664-4.771 4.919-4.919C8.356 2.175 8.734 2.163 12 2.163zm0 1.44c-3.117 0-3.504.012-4.73.07-2.73.124-4.112 1.5-4.233 4.233-.058 1.226-.07 1.613-.07 4.73s.012 3.504.07 4.73c.12 2.73 1.5 4.112 4.233 4.233 1.226.058 1.613.07 4.73.07s3.504-.012 4.73-.07c2.73-.12 4.112-1.5 4.233-4.233.058-1.226.07-1.613.07-4.73s-.012-3.504-.07-4.73c-.12-2.73-1.5-4.112-4.233-4.233-1.226-.058-1.613-.07-4.73-.07zm0 4.234a4.162 4.162 0 100 8.324 4.162 4.162 0 000-8.324zM12 16a2.72 2.72 0 110-5.44 2.72 2.72 0 010 5.44zm4.77-7.37a.96.96 0 100-1.92.96.96 0 000 1.92z" />
                             </svg></a>
-                        <a href="#" class="text-gray-400 hover:text-white" aria-label="X/Twitter"><svg class="w-6 h-6"
+                        <a href="https://x.com/yourprofile" class="text-gray-400 hover:text-white" aria-label="X/Twitter"><svg class="w-6 h-6"
                                 fill="currentColor" viewBox="0 0 24 24">
                                 <path
                                     d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
@@ -290,14 +359,14 @@
             fetchData() {
                 // Data is the same as previous version
                 this.state.products = [
-                    { id: 1, type: 'product', name: 'The Aurelia Gown', price: 185000, category: 'Bridal', image: 'https://placehold.co/600x800/FDFBF8/2C3E50?text=Aurelia+Gown', description: 'An ethereal bridal gown with hand-sewn pearls and a cascading tulle skirt. Made for the modern romantic.', featured: true },
-                    { id: 2, type: 'product', name: 'Chioma Power Suit', price: 95000, category: 'Ready-to-Wear', image: 'https://placehold.co/600x800/C06C59/FFFFFF?text=Chioma+Suit', description: 'A chic and powerful two-piece suit in rich Adire silk, perfect for executive meetings or upscale events.', featured: true },
-                    { id: 3, type: 'product', name: 'Lagos Nights Cocktail Dress', price: 95000, category: 'Evening Wear', image: 'https://placehold.co/600x800/1A202C/FFFFFF?text=Cocktail+Dress', description: 'Turn heads in this sequined cocktail dress, designed to shimmer and shine under city lights.', featured: true },
-                    { id: 4, type: 'product', name: 'Bespoke Aso-Ebi', price: 250000, category: 'Bespoke', image: 'https://placehold.co/600x800/2C3E50/FFFFFF?text=Bespoke+Aso-Ebi', description: 'A fully customized Aso-Ebi masterpiece. Contact us for a consultation to bring your vision to life.' },
-                    { id: 5, type: 'product', name: 'The Sade Wrap Blouse', price: 45000, category: 'Ready-to-Wear', image: 'https://placehold.co/600x800/FDFBF8/2C3E50?text=Sade+Blouse', description: 'A versatile and elegant wrap blouse made from lightweight Nigerian crepe.' },
-                    { id: 6, type: 'product', name: 'The Oba Grand Bubu', price: 120000, category: 'Kaftans', image: 'https://placehold.co/600x800/C06C59/FFFFFF?text=Oba+Bubu', description: 'Feel like royalty in this flowing, embroidered Bubu, a timeless piece of ageless style.' },
-                    { id: 7, type: 'product', name: 'Ankara Infinity Jumpsuit', price: 65000, category: 'Ready-to-Wear', image: 'https://placehold.co/600x800/1A202C/FFFFFF?text=Ankara+Jumpsuit', description: 'A vibrant, modern jumpsuit with convertible straps for endless styling options.' },
-                    { id: 8, type: 'product', name: 'Celestial Reception Dress', price: 220000, category: 'Bridal', image: 'https://placehold.co/600x800/2C3E50/FFFFFF?text=Reception+Dress', description: 'Dance the night away in this stunning, embellished second dress for the modern bride.' },
+                    { id: 1, type: 'product', name: 'The Aurelia Gown', price: 185000, salePrice: 165000, category: 'Bridal', image: 'https://placehold.co/600x800/FDFBF8/2C3E50?text=Aurelia+Gown', description: 'An ethereal bridal gown with hand-sewn pearls and a cascading tulle skirt. Made for the modern romantic.', featured: true },
+                    { id: 2, type: 'product', name: 'Chioma Power Suit', price: 95000, salePrice: 79999, category: 'Ready-to-Wear', image: 'https://placehold.co/600x800/C06C59/FFFFFF?text=Chioma+Suit', description: 'A chic and powerful two-piece suit in rich Adire silk, perfect for executive meetings or upscale events.', featured: true },
+                    { id: 3, type: 'product', name: 'Lagos Nights Cocktail Dress', price: 95000, salePrice: null, category: 'Evening Wear', image: 'https://placehold.co/600x800/1A202C/FFFFFF?text=Cocktail+Dress', description: 'Turn heads in this sequined cocktail dress, designed to shimmer and shine under city lights.', featured: true },
+                    { id: 4, type: 'product', name: 'Bespoke Aso-Ebi', price: 250000, salePrice: null, category: 'Bespoke', image: 'https://placehold.co/600x800/2C3E50/FFFFFF?text=Bespoke+Aso-Ebi', description: 'A fully customized Aso-Ebi masterpiece. Contact us for a consultation to bring your vision to life.' },
+                    { id: 5, type: 'product', name: 'The Sade Wrap Blouse', price: 45000, salePrice: 39000, category: 'Ready-to-Wear', image: 'https://placehold.co/600x800/FDFBF8/2C3E50?text=Sade+Blouse', description: 'A versatile and elegant wrap blouse made from lightweight Nigerian crepe.' },
+                    { id: 6, type: 'product', name: 'The Oba Grand Bubu', price: 120000, salePrice: null, category: 'Kaftans', image: 'https://placehold.co/600x800/C06C59/FFFFFF?text=Oba+Bubu', description: 'Feel like royalty in this flowing, embroidered Bubu, a timeless piece of ageless style.' },
+                    { id: 7, type: 'product', name: 'Ankara Infinity Jumpsuit', price: 65000, salePrice: 59999, category: 'Ready-to-Wear', image: 'https://placehold.co/600x800/1A202C/FFFFFF?text=Ankara+Jumpsuit', description: 'A vibrant, modern jumpsuit with convertible straps for endless styling options.' },
+                    { id: 8, type: 'product', name: 'Celestial Reception Dress', price: 220000, salePrice: null, category: 'Bridal', image: 'https://placehold.co/600x800/2C3E50/FFFFFF?text=Reception+Dress', description: 'Dance the night away in this stunning, embellished second dress for the modern bride.' },
                 ];
                 this.state.courses = [
                     { id: 101, type: 'course', name: 'Mastering Pattern Drafting', price: 50000, image: 'https://placehold.co/600x400/FDFBF8/1A202C?text=Pattern+Drafting', summary: 'From basic blocks to complex designs, learn the art of professional pattern making.', instructor: 'Ada Okoro' },
@@ -332,6 +401,7 @@
                     case 'academy': content = this.renderAcademyPage(); break;
                     case 'blog': content = this.renderBlogPage(); break;
                     case 'contact': content = this.renderContactPage(); break;
+                    case 'faq': content = app.renderFaqPage(); break;
                     case 'product': content = this.renderDetailPage(this.state.products.find(p => p.id === this.state.currentFilter)); break;
                     case 'course': content = this.renderDetailPage(this.state.courses.find(c => c.id === this.state.currentFilter)); break;
                     case 'post': content = this.renderDetailPage(this.state.posts.find(p => p.id === this.state.currentFilter)); break;
@@ -351,14 +421,31 @@
                     <div class="text-center bg-primary-bg/80 backdrop-blur-sm p-8 md:p-12 rounded-lg max-w-2xl fade-in">
                         <h1 class="font-serif text-4xl md:text-6xl font-bold">Timeless Elegance, Redefined</h1>
                         <p class="mt-4 max-w-xl mx-auto text-lg text-secondary-text">Experience luxury fashion, meticulously crafted in the heart of Lagos.</p>
-                        <button onclick="app.navigateTo('shop')" class="mt-8 px-8 py-3 bg-accent-blue text-white font-semibold rounded-md hover:bg-opacity-90 transition">Shop The Collection</button>
+                        <button onclick="app.navigateTo('shop')" class="mt-8 px-8 py-3 bg-accent-blue text-primary-text font-semibold rounded-md hover:bg-opacity-90 transition">Shop The Collection</button>
                     </div>
                 </section>
                 <section class="container mx-auto px-4 sm:px-6 lg:px-8 py-20">
                     <h2 class="text-3xl font-serif text-center font-bold mb-12">Featured Pieces</h2>
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">${featuredProducts}</div>
                 </section>
-                 <section class="bg-white py-20">
+                <section class="bg-white py-20">
+                    <h2 class="text-3xl font-serif text-center font-bold mb-12">What Our Clients Say</h2>
+                    <div class="container mx-auto grid md:grid-cols-3 gap-8">
+                        <div class="text-center p-6">
+                            <p class="text-secondary-text">"The quality and craftsmanship are unmatched. I felt like a queen in my Aurelia Gown!"</p>
+                            <p class="font-bold mt-4">- Funke A.</p>
+                        </div>
+                        <div class="text-center p-6">
+                            <p class="text-secondary-text">"Phoebes Designs made my wedding day magical. The attention to detail is incredible."</p>
+                            <p class="font-bold mt-4">- Chidinma O.</p>
+                        </div>
+                        <div class="text-center p-6">
+                            <p class="text-secondary-text">"I love my Chioma Power Suit! It fits perfectly and makes me feel confident."</p>
+                            <p class="font-bold mt-4">- Ada E.</p>
+                        </div>
+                    </div>
+                </section>
+                <section class="bg-white py-20">
                     <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
                          <h2 class="text-3xl font-serif text-center font-bold mb-4">From The Journal</h2>
                          <p class="max-w-2xl mx-auto text-secondary-text mb-12">Inspiration, stories, and insights from the world of Phoebes Designs.</p>
@@ -397,7 +484,7 @@
                                 <input type="text" placeholder="Your Name" required class="w-full border-gray-300 rounded-md p-3 focus:ring-accent-terracotta focus:border-accent-terracotta">
                                 <input type="email" placeholder="Email Address" required class="w-full border-gray-300 rounded-md p-3 focus:ring-accent-terracotta focus:border-accent-terracotta">
                                 <textarea rows="6" placeholder="Your Message" required class="w-full border-gray-300 rounded-md p-3 focus:ring-accent-terracotta focus:border-accent-terracotta"></textarea>
-                                <button type="submit" class="w-full bg-accent-blue text-white py-3 rounded-md font-semibold hover:bg-opacity-90 transition">Send Message</button>
+                                <button type="submit" class="w-full bg-accent-blue text-primary-text py-3 rounded-md font-semibold hover:bg-opacity-90 transition">Send Message</button>
                             </form>
                         </div>
                         <div class="space-y-6">
@@ -415,7 +502,14 @@
             renderDetailPage(item) {
                 if (!item) { this.navigateTo('home'); return ''; }
                 if (item.type === 'product' || item.type === 'course') {
-                    return `<div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16"><div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start"><img src="${item.image}" alt="${item.name}" class="w-full h-auto object-cover rounded-lg shadow-lg"><div><h4 class="text-sm uppercase tracking-widest text-accent-terracotta">${item.type === 'product' ? item.category : 'Online Course'}</h4><h1 class="text-4xl font-serif font-bold mt-2">${item.name}</h1><p class="text-3xl font-light my-4 text-accent-terracotta">₦${item.price.toLocaleString()}</p><p class="text-secondary-text leading-relaxed">${item.description || item.summary}</p><div class="mt-8"><button onclick="app.addToCart(${item.id}, '${item.type}')" class="w-full px-8 py-4 bg-accent-blue text-white font-semibold rounded-md hover:bg-opacity-90 transition">${item.type === 'product' ? 'Add to Bag' : 'Enroll Now'}</button></div></div></div></div>`;
+                    return `<div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16"><div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start"><img src="${item.image}" alt="${item.name}" class="w-full h-auto object-cover rounded-lg shadow-lg"><div><h4 class="text-sm uppercase tracking-widest text-accent-terracotta">${item.type === 'product' ? item.category : 'Online Course'}</h4><h1 class="text-4xl font-serif font-bold mt-2">${item.name}</h1><p class="text-3xl font-light my-4 text-accent-terracotta">
+                        ${item.salePrice ? `<span class='line-through text-gray-500'>₦${item.price.toLocaleString()}</span> <span class='text-accent-gold font-bold'>₦${item.salePrice.toLocaleString()}</span>` : `₦${item.price.toLocaleString()}`}
+                    </p><p class="text-secondary-text leading-relaxed">${item.description || item.summary}</p>
+                    <div class="mt-8 flex flex-col gap-4">
+                        <button onclick="app.addToCart(${item.id}, '${item.type}')" class="w-full px-8 py-4 bg-accent-blue text-primary-text font-semibold rounded-md hover:bg-opacity-90 transition">${item.type === 'product' ? 'Add to Bag' : 'Enroll Now'}</button>
+                        ${item.type === 'product' ? `<button onclick="app.showSizeChart()" class="text-sm underline hover:text-accent-blue">Size Chart</button>` : ''}
+                    </div>
+                    </div></div></div>`;
                 } else { // For Blog Posts
                     return `<div class="bg-white"><div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12 max-w-4xl"><img src="${item.image}" alt="${item.title}" class="w-full h-96 object-cover rounded-lg shadow-lg"><h1 class="text-5xl font-serif font-bold my-8 text-center">${item.title}</h1><p class="text-center text-secondary-text mb-8">${item.date} by ${item.author}</p><div class="prose lg:prose-xl mx-auto text-primary-text leading-relaxed">${item.content}</div></div></div>`;
                 }
@@ -427,7 +521,7 @@
                     this.navigateTo('shop');
                     return '<p>Your cart is empty. Redirecting...</p>';
                 }
-                const subtotal = this.state.cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+                const subtotal = this.state.cart.reduce((sum, item) => sum + (item.salePrice ? item.salePrice : item.price) * item.quantity, 0);
                 const hasPhysical = this.state.cart.some(item => item.type === 'product');
                 const shipping = hasPhysical ? 7500 : 0;
                 const total = subtotal + shipping;
@@ -441,7 +535,9 @@
                            <p class="text-secondary-text text-xs">${item.type === 'product' ? item.category : 'Course'}</p>
                         </div>
                     </div>
-                    <p>₦${(item.price * item.quantity).toLocaleString()}</p>
+                    <p>
+                        ${item.salePrice ? `<span class='line-through text-gray-500'>₦${item.price !== item.salePrice ? item.price.toLocaleString() : ''}</span> <span class='text-accent-gold font-bold'>₦${(item.salePrice * item.quantity).toLocaleString()}</span>` : `₦${(item.price * item.quantity).toLocaleString()}`}
+                    </p>
                 </div>
             `).join('');
 
@@ -479,7 +575,7 @@
                                  <div class="flex justify-between text-secondary-text"><span>Shipping</span><span>${hasPhysical ? `₦${shipping.toLocaleString()}` : 'N/A'}</span></div>
                                  <div class="flex justify-between font-bold text-lg border-t pt-2 mt-2"><span>Total</span><span>₦${total.toLocaleString()}</span></div>
                              </div>
-                             <button onclick="app.processPayment()" class="w-full mt-8 bg-accent-blue text-white py-3 rounded-md font-semibold hover:bg-opacity-90 transition">Pay with Paystack</button>
+                             <button onclick="app.processPayment()" class="w-full mt-8 bg-accent-blue text-primary-text py-3 rounded-md font-semibold hover:bg-opacity-90 transition">Pay with Paystack</button>
                          </div>
                      </div>
                  </div>`;
@@ -488,13 +584,18 @@
             // FIX: The shop page now renders correctly
             renderProductCard(product) {
                 return `
-                <div class="group relative text-center">
-                    <div class="w-full bg-gray-200 rounded-lg overflow-hidden">
-                        <img src="${product.image}" alt="${product.name}" class="w-full h-96 object-center object-cover group-hover:scale-110 transition-transform duration-500">
+                <div class="card group relative text-center">
+                    <div class="w-full rounded-xl overflow-hidden mb-4">
+                        <img src="${product.image}" alt="${product.name}" class="w-full h-80 object-center object-cover transition-transform duration-500 rounded-xl">
                     </div>
-                    <div class="mt-4">
-                        <h3 class="text-lg font-semibold"><a href="#" onclick="event.preventDefault(); app.navigateTo('product', ${product.id})" class="hover:text-accent-terracotta transition">${product.name}</a></h3>
-                        <p class="mt-1 text-md text-secondary-text">₦${product.price.toLocaleString()}</p>
+                    <div class="mt-2">
+                        <h3 class="text-lg font-semibold"><a href="#" onclick="event.preventDefault(); app.navigateTo('product', ${product.id})" class="hover:text-accent-pink transition">${product.name}</a></h3>
+                        <p class="mt-1 text-md text-secondary-text">
+                            ${product.salePrice ?
+                                `<span class='line-through text-secondary-text'>₦${product.price.toLocaleString()}</span> <span class='text-accent-pink font-bold'>₦${product.salePrice.toLocaleString()}</span>` :
+                                `₦${product.price.toLocaleString()}`
+                            }
+                        </p>
                     </div>
                 </div>`;
             },
@@ -503,27 +604,27 @@
                 const summary = post.content.replace(/<[^>]+>/g, '').substring(0, 120);
                 const containerClass = isFeatured ? 'md:col-span-2' : '';
                 return `
-                <div class="${containerClass} group bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
-                    <img src="${post.image}" alt="${post.title}" class="w-full h-56 object-cover">
-                    <div class="p-6">
+                <div class="${containerClass} card group overflow-hidden">
+                    <img src="${post.image}" alt="${post.title}" class="w-full h-56 object-cover rounded-xl">
+                    <div class="mt-4">
                         <p class="text-sm text-secondary-text">${post.date}</p>
                         <h3 class="text-xl font-serif font-bold mt-2">${post.title}</h3>
                         <p class="mt-4 text-secondary-text">${summary}...</p>
-                        <button onclick="app.navigateTo('post', ${post.id})" class="mt-6 text-sm font-semibold text-accent-blue hover:underline">Read More &rarr;</button>
+                        <button onclick="app.navigateTo('post', ${post.id})" class="mt-6 text-sm font-semibold btn">Read More &rarr;</button>
                     </div>
                 </div>`;
             },
             renderCourseCard(course) {
                 return `
-                <div class="group bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
-                    <img src="${course.image}" alt="${course.name}" class="w-full h-48 object-cover">
-                    <div class="p-6">
+                <div class="card group overflow-hidden">
+                    <img src="${course.image}" alt="${course.name}" class="w-full h-48 object-cover rounded-xl">
+                    <div class="mt-4">
                         <h3 class="text-xl font-serif font-bold">${course.name}</h3>
                         <p class="text-sm text-secondary-text mt-1">with ${course.instructor}</p>
                         <p class="mt-4 text-secondary-text h-20">${course.summary}</p>
                         <div class="flex justify-between items-center mt-6">
-                            <span class="text-2xl font-semibold text-accent-terracotta">₦${course.price.toLocaleString()}</span>
-                            <button onclick="app.navigateTo('course', ${course.id})" class="text-sm font-semibold text-accent-blue hover:underline">View Course</button>
+                            <span class="text-2xl font-semibold text-accent-pink">₦${course.price.toLocaleString()}</span>
+                            <button onclick="app.navigateTo('course', ${course.id})" class="text-sm font-semibold btn">View Course</button>
                         </div>
                     </div>
                 </div>`;
@@ -532,7 +633,11 @@
             // Cart and Payment logic remain the same
             addToCart(itemId, itemType) {
                 const source = itemType === 'product' ? this.state.products : this.state.courses;
-                const itemToAdd = source.find(p => p.id === itemId);
+                let itemToAdd = source.find(p => p.id === itemId);
+                // Use salePrice if present for products
+                if (itemType === 'product' && itemToAdd.salePrice) {
+                    itemToAdd = { ...itemToAdd, price: itemToAdd.salePrice };
+                }
                 const cartItem = this.state.cart.find(item => item.id === itemId);
                 if (cartItem) { cartItem.quantity++; } else { this.state.cart.push({ ...itemToAdd, quantity: 1 }); }
                 this.showMessage(`${itemToAdd.name} added to bag!`);
@@ -565,7 +670,9 @@
                          <div>
                             <p class="font-semibold text-sm">${item.name}</p>
                             <p class="text-xs text-secondary-text">${item.type === 'course' ? 'Online Course' : item.category}</p>
-                            <p class="text-sm text-primary-text mt-2">₦${item.price.toLocaleString()}</p>
+                            <p class="text-sm text-primary-text mt-2">
+                                ${item.salePrice ? `<span class='line-through text-gray-500'>₦${item.price !== item.salePrice ? item.price.toLocaleString() : ''}</span> <span class='text-accent-gold font-bold'>₦${item.salePrice.toLocaleString()}</span>` : `₦${item.price.toLocaleString()}`}
+                            </p>
                          </div>
                     </div>
                     <div class="text-right">
@@ -578,7 +685,7 @@
                     </div>
                 </div>
             `).join('');
-                const subtotal = this.state.cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+                const subtotal = this.state.cart.reduce((sum, item) => sum + (item.salePrice ? item.salePrice : item.price) * item.quantity, 0);
                 document.getElementById('cart-subtotal').textContent = `₦${subtotal.toLocaleString()}`;
             },
             updateCartIndicator() {
@@ -641,6 +748,46 @@
         };
 
         document.addEventListener('DOMContentLoaded', () => app.init());
+        // FAQ page logic
+        app.renderFaqPage = function() {
+            const faqs = [
+                { q: "How do I place an order?", a: "Browse our collection, add items to your bag, and proceed to checkout. For bespoke orders, contact us directly." },
+                { q: "What payment methods do you accept?", a: "We accept Paystack, credit/debit cards, and bank transfers for Nigerian customers." },
+                { q: "Do you ship internationally?", a: "Yes, we ship worldwide. Shipping fees and delivery times vary by location." },
+                { q: "Can I customize my order?", a: "Absolutely! For custom sizing or design requests, contact us after placing your order." },
+                { q: "What is your return policy?", a: "Ready-to-wear items can be returned within 7 days if unworn. Bespoke pieces are final sale." }
+            ];
+            return `
+                <div class='container mx-auto px-4 sm:px-6 lg:px-8 py-16'>
+                    <h1 class='text-4xl font-serif font-bold mb-8 text-center'>Frequently Asked Questions</h1>
+                    <div class='max-w-2xl mx-auto'>
+                        ${faqs.map((faq, i) => `
+                            <div class='mb-6 border-b pb-4'>
+                                <button type='button' onclick='document.getElementById("faq-a${i}").classList.toggle("hidden")' class='w-full text-left text-lg font-semibold text-accent-blue focus:outline-none'>${faq.q}</button>
+                                <div id='faq-a${i}' class='mt-2 text-secondary-text text-md hidden'>${faq.a}</div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+        }
+        // Size Chart modal logic
+        app.showSizeChart = function() {
+            const message = `
+                <h3 class='font-serif text-xl font-bold mb-4'>Size Guide</h3>
+                <table class='w-full text-left mb-4'>
+                    <thead><tr><th>Size</th><th>Bust (in)</th><th>Waist (in)</th></tr></thead>
+                    <tbody>
+                        <tr><td>S</td><td>32-34</td><td>25-27</td></tr>
+                        <tr><td>M</td><td>35-37</td><td>28-30</td></tr>
+                        <tr><td>L</td><td>38-41</td><td>31-34</td></tr>
+                        <tr><td>XL</td><td>42-45</td><td>35-38</td></tr>
+                    </tbody>
+                </table>
+                <p class='text-secondary-text text-sm'>For custom sizing, please contact us after placing your order.</p>
+            `;
+            app.showMessage(message, 'info');
+        }
     </script>
 
 </body>
